@@ -5,15 +5,15 @@ module.exports = {
   getUpcommingMeetups: async (req, res, next) => {
     var meetups = {};
     ical.fromURL('http://api.meetup.com/Ethereum-Boulder/upcoming.ical', {}, function(err, ebData) {
-      meetups.EthereumBoulder = getNextEventFor(ebData);
+      meetups['Ethereum-Boulder'] = getNextEventFor(ebData);
       ical.fromURL('http://api.meetup.com/Boulder-Blockchain/upcoming.ical', {}, function(err, bbdata) {
-        meetups.BoulderBlockchain = getNextEventFor(bbdata);
+        meetups['Boulder-Blockchain'] = getNextEventFor(bbdata);
         ical.fromURL('http://api.meetup.com/Colorado-Government-Blockchain-Professionals/upcoming.ical', {}, function(err, cbpdata) {
-          meetups.ColoradoGovernmentBlockchainProfessionals = getNextEventFor(cbpdata);
+          meetups['Colorado-Government-Blockchain-Professionals'] = getNextEventFor(cbpdata);
           ical.fromURL('http://api.meetup.com/Hyperledger-Denver/upcoming.ical', {}, function(err, hdata) {
-            meetups.HyperledgerDenver = getNextEventFor(hdata);
+            meetups['Hyperledger-Denver'] = getNextEventFor(hdata);
             ical.fromURL('http://api.meetup.com/Women-in-BlockChain-MeetUp/upcoming.ical', {}, function(err, wibcdata) {
-              meetups.WomenInBlockChainMeetUp = getNextEventFor(wibcdata);
+              meetups['Women-in-BlockChain-MeetUp'] = getNextEventFor(wibcdata);
               res.status(200).json(meetups);
             });
           });
