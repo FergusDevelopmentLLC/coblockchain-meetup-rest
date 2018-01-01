@@ -14,7 +14,10 @@ module.exports = {
             meetups['Hyperledger-Denver'] = getNextEventFor(hdata);
             ical.fromURL('http://api.meetup.com/Women-in-BlockChain-MeetUp/upcoming.ical', {}, function(err, wibcdata) {
               meetups['Women-in-BlockChain-MeetUp'] = getNextEventFor(wibcdata);
-              res.status(200).json(meetups);
+              ical.fromURL('http://api.meetup.com/Bitcoin-and-Beer/upcoming.ical', {}, function(err, babdata) {
+                meetups['Bitcoin-and-Beer'] = getNextEventFor(babdata);
+                res.status(200).json(meetups);
+              });
             });
           });
         });
