@@ -16,7 +16,19 @@ module.exports = {
               meetups['Women-in-BlockChain-MeetUp'] = getNextEventFor(wibcdata);
               ical.fromURL('http://api.meetup.com/Bitcoin-and-Beer/upcoming.ical', {}, function(err, babdata) {
                 meetups['Bitcoin-and-Beer'] = getNextEventFor(babdata);
-                res.status(200).json(meetups);
+                ical.fromURL('http://api.meetup.com/Colorado-Springs-Blockchain-Crypto-Entrepreneurs/upcoming.ical', {}, function(err, csbcedata) {
+                  meetups['Colorado-Springs-Blockchain-Crypto-Entrepreneurs'] = getNextEventFor(csbcedata);
+                  ical.fromURL('http://api.meetup.com/Denver-Crypto-Group/upcoming.ical', {}, function(err, dcgdata) {
+                    meetups['Denver-Crypto-Group'] = getNextEventFor(dcgdata);
+                    ical.fromURL('http://api.meetup.com/Colorado-Springs-Bitcoin-Meetup/upcoming.ical', {}, function(err, csbmdata) {
+                      meetups['Colorado-Springs-Bitcoin-Meetup'] = getNextEventFor(csbmdata);
+                      ical.fromURL('http://api.meetup.com/Colorado-Springs-Blockchain-Crypto-Entrepreneurs/upcoming.ical', {}, function(err, csbcedata) {
+                        meetups['Colorado-Springs-Blockchain-Crypto-Entrepreneurs'] = getNextEventFor(csbcedata);
+                        res.status(200).json(meetups);
+                      });
+                    });
+                  });
+                });
               });
             });
           });
