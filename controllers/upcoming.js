@@ -20,16 +20,13 @@ module.exports = {
                   meetups['Colorado-Springs-Blockchain-Crypto-Entrepreneurs'] = getNextEventFor(csbcedata);
                   ical.fromURL('http://api.meetup.com/Denver-Crypto-Group/upcoming.ical', {}, function(err, dcgdata) {
                     meetups['Denver-Crypto-Group'] = getNextEventFor(dcgdata);
-                    ical.fromURL('http://api.meetup.com/Colorado-Springs-Bitcoin-Meetup/upcoming.ical', {}, function(err, csbmdata) {
-                      meetups['Colorado-Springs-Bitcoin-Meetup'] = getNextEventFor(csbmdata);
-                      ical.fromURL('http://api.meetup.com/Colorado-Springs-Blockchain-Crypto-Entrepreneurs/upcoming.ical', {}, function(err, csbcedata) {
-                        meetups['Colorado-Springs-Blockchain-Crypto-Entrepreneurs'] = getNextEventFor(csbcedata);
-                        ical.fromURL('http://api.meetup.com/Ethereum-Denver/upcoming.ical', {}, function(err, ededata) {
-                          meetups['Ethereum-Denver'] = getNextEventFor(ededata);
-                          ical.fromURL('http://api.meetup.com/rmbchain/upcoming.ical', {}, function(err, rmbdata) {
-                            meetups['rmbchain'] = getNextEventFor(rmbdata);
-                            res.status(200).json(meetups);
-                          });
+                    ical.fromURL('http://api.meetup.com/Colorado-Springs-Blockchain-Crypto-Entrepreneurs/upcoming.ical', {}, function(err, csbcedata) {
+                      meetups['Colorado-Springs-Blockchain-Crypto-Entrepreneurs'] = getNextEventFor(csbcedata);
+                      ical.fromURL('http://api.meetup.com/Ethereum-Denver/upcoming.ical', {}, function(err, ededata) {
+                        meetups['Ethereum-Denver'] = getNextEventFor(ededata);
+                        ical.fromURL('http://api.meetup.com/rmbchain/upcoming.ical', {}, function(err, rmbdata) {
+                          meetups['rmbchain'] = getNextEventFor(rmbdata);
+                          res.status(200).json(meetups);
                         });
                       });
                     });
