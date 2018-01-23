@@ -26,7 +26,10 @@ module.exports = {
                         meetups['Colorado-Springs-Blockchain-Crypto-Entrepreneurs'] = getNextEventFor(csbcedata);
                         ical.fromURL('http://api.meetup.com/Ethereum-Denver/upcoming.ical', {}, function(err, ededata) {
                           meetups['Ethereum-Denver'] = getNextEventFor(ededata);
-                          res.status(200).json(meetups);
+                          ical.fromURL('http://api.meetup.com/rmbchain/upcoming.ical', {}, function(err, rmbdata) {
+                            meetups['rmbchain'] = getNextEventFor(rmbdata);
+                            res.status(200).json(meetups);
+                          });
                         });
                       });
                     });
