@@ -26,7 +26,10 @@ module.exports = {
                         meetups['Ethereum-Denver'] = getNextEventFor(ededata);
                         ical.fromURL('http://api.meetup.com/rmbchain/upcoming.ical', {}, function(err, rmbdata) {
                           meetups['rmbchain'] = getNextEventFor(rmbdata);
-                          res.status(200).json(meetups);
+                          ical.fromURL('http://api.meetup.com/rmbchain/upcoming.ical', {}, function(err, dbmData) {
+                            meetups['Denver-Blockchain-Maximalists'] = getNextEventFor(dbmData);
+                            res.status(200).json(meetups);
+                          });
                         });
                       });
                     });
